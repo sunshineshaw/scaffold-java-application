@@ -2,6 +2,12 @@ plugins {
     alias(libs.plugins.java)
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
+    }
+}
+
 repositories {
     maven { url = "https://maven.aliyun.com/repository/public" }
     mavenCentral()
@@ -12,13 +18,7 @@ dependencies {
 
     testImplementation libs.junit.jupiter
 
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
-    }
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }
 
 jar {
